@@ -1,10 +1,19 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions will use lexical scoping and the cache to store a complex matrix operation (getting the inverse of a matrix) in such a way that once made,
+## it needs not be recalculated each time.
+##
+## Instead, the special matrix type caches the result of solve(), which can then be returned by the cacheSolve function.
+## If there is no cached result, cacheSolve will calculate the inverse of the matrix and store it in the cache.
+
+## And yes, I DID just copy and modify the original code for makeVector and cacheMean to adapt them to my purposes (AKA., the matrix inversion).
+## 
+
 
 ## This function creates a special matrix that comes packaged with the possibility so store it's inverse.
 
 makeCacheMatrix <- function(x = matrix()){
-  m <- NULL
+  
+  # initialize m as NULL, seeing as we're creating a new special matrix with no infromation yet in the cache.
+  m <- NULL             
   set <- function(y) {
     x <<- y
     m <<- NULL
